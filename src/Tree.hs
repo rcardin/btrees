@@ -55,3 +55,6 @@ depth (Node _ leaf right) = maximum [depth leaf, depth right] + 1
 map' :: Tree a -> (a -> b) -> Tree b
 map' EmptyTree _ = EmptyTree
 map' (Node x left right) f = Node (f x) (map' left f) (map' right f)
+
+instance Functor Tree where
+    fmap f root = map' root f
